@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { fireDb , app} from "../firebaseConfig";
-import { addDoc, collection } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 
 
 
@@ -17,12 +17,14 @@ function Register() {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
+          console.log(user);
           const userData = {
             email : user.email ,
             profilePicUrl : '' ,
             bio : '' ,
+            id : user.uid
           }
-          addDoc(collection(fireDb, 'users'), userData);
+          setDoc(doc(fireDb, 'users', user.uid), userData);
           console.log(user);
         })
         .catch((error) => {

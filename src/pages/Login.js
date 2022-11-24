@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fireDb , app} from "../firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from 'firebase/firestore';
 
 
 function Login() {
@@ -13,6 +14,10 @@ function Login() {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            getDoc(doc(fireDb, 'users', user.uid)).then((user) => {
+                localStorage.setItem('bantr-user', JSON.stringify({...user.data() , id : user.id}));
+            });
+            
           })
           .catch((error) => {
             console.log(error);
