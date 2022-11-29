@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+//import { Default } from 'react-toastify/dist/utils';
+import DefaultLayout from '../components/DefaultLayout'
 
 function Home() {
   return (
-    <div>Home</div>
+    <DefaultLayout>
+      <div>Home</div>
+    </DefaultLayout>
   )
 }
 
