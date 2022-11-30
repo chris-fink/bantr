@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { fireDb, app } from "../firebaseConfig";
@@ -43,21 +43,26 @@ function Register() {
         console.log(error);
       });
   };
-
+  useEffect(()=>{
+    if(localStorage.getItem('bantr-user'))
+    {
+       navigate('/') 
+    }
+})
   return (
     <div className='h-screen flex justify-between flex-col bg-primary overflow-hidden'>
 
       {loading && <Loader />}
       <div className='flex justify-start'>
         {/* Top Corner */}
-        <div className='h-40 bg-secondary w-96 transform -skew-x-[25deg] -ml-10 flex items-center justify-center border-yellow-400 border-8'>
+        <div className='h-40 bg-secondary w-96 transform -skew-x-[25deg] -ml-10 flex items-center justify-center border-[#ffba08] border-8'>
           <h1 id="logo" className='text-center text-6xl font-semibold skew-x-[25deg] text-white'>Bantr</h1>
         </div>
       </div>
 
       <div className='flex justify-center'>
         {/* Center Form */}
-        <div className='w-[420px] flex flex-col space-y-5 card p-10 bg-neutral/75 rounded-xl border-yellow-400 border-4'>
+        <div className='w-[420px] flex flex-col space-y-5 card p-10 bg-neutral/75 rounded-xl border-[#ffba08] border-4'>
           <h1 className='text-4xl text-black font-semibold'>Register</h1>
           <hr />
           <input type="text"
@@ -87,7 +92,7 @@ function Register() {
 
       <div className='flex justify-end'>
         {/* Bottom Corner */}
-        <div className='h-40 bg-secondary w-96 transform -skew-x-[25deg] -mr-10 flex items-center justify-center border-yellow-400 border-8'>
+        <div className='h-40 bg-secondary w-96 transform -skew-x-[25deg] -mr-10 flex items-center justify-center border-[#ffba08] border-8'>
 
         </div>
       </div>

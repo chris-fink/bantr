@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path='/' element={<Home />} />
-          <Route path='/addpost' element={<AddPost />} />
+          <Route path='/' element={<ProtectedRouted><Home /></ProtectedRouted>} />
+          <Route path='/addpost' element={<ProtectedRouted><AddPost /></ProtectedRouted>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
 
@@ -24,6 +24,14 @@ function App() {
       </BrowserRouter>
     </div>
   );
+}
+function ProtectedRouted({children}){
+  if(localStorage.getItem('bantr-user'))
+  {
+    return children
+  } else {
+    return <Navigate to='/login' />
+  }
 }
 
 export default App;
