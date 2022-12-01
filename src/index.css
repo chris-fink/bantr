@@ -3,11 +3,17 @@
 * {
   font-family: 'Monsterrat', sans-serif;
 }
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
 .card{
   box-shadow: 0 0 3px gray;
 }
 #logo {
   font-family: 'Sansita Swashed', cursive;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 @tailwind base;
 @tailwind components;

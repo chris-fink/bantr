@@ -28,14 +28,14 @@ function Header() {
   return (
     <div className='p-2 bg-secondary rounded-md  border-4 border-[#ffba08]'>
       {!showMenu && (
-        <div className='md:flex justify-end mr-5 mt-5 hidden bg-secondary -mb-8'>
+        <div className='md:flex justify-end mr-5 mt-5 hidden bg-secondary -mb-12'>
           <CgMenuRightAlt size={30} color='white' className='cursor-pointer' onClick={() => setShowMenu(true)} />
         </div>
       )}
 
       <div className='flex items-center justify-between'>
 
-        <h1 className='text-2xl font-semibold text-white ' id='logo'>bantr</h1>
+        <h1 className='text-6xl font-semibold text-white ' id='logo'>bantr</h1>
         {/*web view */}
         <div className="flex space-x-10 justify-end items-center md:flex-col md:items-end md:space-y-5 md:hidden">
           {menuItems.map((item) => {
