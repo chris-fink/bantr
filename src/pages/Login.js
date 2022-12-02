@@ -25,12 +25,12 @@ function Login() {
                     localStorage.setItem('bantr-user', JSON.stringify({ ...user.data(), id: user.id }))
                     toast.success('Login Successful');
                 });
-                dispatch({type : 'hideLoading'})
-                navigate('/')
+                dispatch({type : 'hideLoading'});
+                navigate('/');
             })
             .catch((error) => {
                 toast.error('Login Failed');
-                dispatch({type : 'hideLoading'})
+                dispatch({type : 'hideLoading'});
                 console.log(error);
             });
 
@@ -38,9 +38,9 @@ function Login() {
     useEffect(()=>{
         if(localStorage.getItem('bantr-user'))
         {
-           navigate('/') 
+           navigate('/'); 
         }
-    })
+    });
     
     return (
         <div className='h-screen flex justify-between flex-col bg-primary overflow-hidden'>

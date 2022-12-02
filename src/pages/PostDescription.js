@@ -9,6 +9,7 @@ import { TfiCommentAlt } from 'react-icons/tfi';
 import { useNavigate } from 'react-router-dom';
 
 function PostDescription() {
+  const currentUser = JSON.parse(localStorage.getItem('batnr-user'));
   const navigate = useNavigate();
   const getUserName = () => {
     const email = post.user.email;
@@ -32,6 +33,14 @@ function PostDescription() {
       });
   }, []);
 
+  const likeOrUnlikePost = () => {
+    const likes = post.likes;
+    
+    likes.push({
+      id : JSON.parse(localStorage.getItem('batnr-user'));
+    })
+  }
+
   return (
     <DefaultLayout>
       <div className='flex w-full justify-center'>
@@ -53,7 +62,7 @@ function PostDescription() {
             </div>
             <div className='card-sm p-2 flex w-full items-center space-x-5'>
               <div className='flex space-x-2 items-center'>
-                <AiOutlineHeart size={25} />
+                <AiOutlineHeart size={25} onClick={likeOrUnlikePost} />
                 <h1>{post.likes.length}</h1>
               </div>
               <div className='flex space-x-2 items-center'>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { CgMenuRightAlt } from 'react-icons/cg'
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { CgMenuRightAlt } from 'react-icons/cg';
 
 function Header() {
-  const location = useLocation()
+  const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
   const menuItems = [
 
     {
@@ -52,6 +53,13 @@ function Header() {
               </Link>
             );
           })}
+          <h1 
+            className='text-gray-200 font-semibold cursor-pointer'
+            onClick={()=>{
+              localStorage.removeItem('bantr-user');
+              navigate('/login');
+            }}
+          >Logout</h1>
         </div>
 
         {/*mobile view */}
@@ -65,6 +73,13 @@ function Header() {
                 {item.title}
               </Link>
             })}
+            <h1 
+            className='text-gray-200 font-semibold cursor-pointer'
+            onClick={()=>{
+              localStorage.removeItem('bantr-user');
+              navigate('/login');
+            }}
+          >Logout</h1>
           </div>
         )}
       </div>
