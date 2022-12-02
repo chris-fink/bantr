@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import AddPost from './pages/AddPost'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PostDescription from './pages/PostDescription';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
           <Route path='/' element={<ProtectedRouted><Home /></ProtectedRouted>} />
           <Route path='/addpost' element={<ProtectedRouted><AddPost /></ProtectedRouted>} />
+          <Route path='/post/:id' element={<ProtectedRouted><PostDescription /></ProtectedRouted>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
 
