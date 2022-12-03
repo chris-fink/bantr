@@ -37,7 +37,8 @@ function PostDescription() {
     const likes = post.likes;
     
     likes.push({
-      id : JSON.parse(localStorage.getItem('batnr-user'));
+      id : currentUser.id,
+      email: currentUser.id,
     })
   }
 
