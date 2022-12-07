@@ -14,7 +14,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { loading } = useSelector(store => store);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch()
 
   const register = () => {
@@ -43,12 +43,11 @@ function Register() {
         console.log(error);
       });
   };
-  useEffect(()=>{
-    if(localStorage.getItem('bantr-user'))
-    {
-       navigate('/') 
+  useEffect(() => {
+    if (localStorage.getItem('bantr-user')) {
+      navigate('/')
     }
-})
+  })
   return (
     <div className='h-screen flex justify-between flex-col bg-primary overflow-hidden'>
 

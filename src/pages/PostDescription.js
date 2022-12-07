@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import DefaultLayout from '../components/DefaultLayout';
 import { fireDb } from '../firebaseConfig';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { AiFillHeart, AiOutlineCloseCircle } from 'react-icons/ai';
 import { TfiCommentAlt } from 'react-icons/tfi';
 import { useNavigate } from 'react-router-dom';
@@ -106,10 +106,10 @@ function PostDescription() {
               <div className='w-96'>
                 <div className='flex justify-between'>
                   <h1 className='text-xl font-semibold text-gray-500'>Liked By</h1>
-                  <AiOutlineCloseCircle 
-                    className='cursor-pointer' 
-                    color='gray' 
-                    onClick={() => setShowLikes(false)} 
+                  <AiOutlineCloseCircle
+                    className='cursor-pointer'
+                    color='gray'
+                    onClick={() => setShowLikes(false)}
                   />
                 </div>
                 <hr />
@@ -162,11 +162,11 @@ function PostDescription() {
                   </h1>
                 </div>
                 <div className='flex space-x-2 items-center'>
-                  <FiShare  
-                    onClick={()=>navigate(`/SharePost/${post.id}`)} 
-                    size={25} 
-                    color='gray' 
-                    className='cursor-pointer' 
+                  <FiShare
+                    onClick={() => navigate(`/SharePost/${post.id}`)}
+                    size={25}
+                    color='gray'
+                    className='cursor-pointer'
                   />
                 </div>
               </div>
@@ -177,10 +177,10 @@ function PostDescription() {
               <div className='w-96'>
                 <div className='flex justify-between'>
                   <h1 className='text-xl font-semibold text-gray-500'>Comments</h1>
-                  <AiOutlineCloseCircle 
-                    className='cursor-pointer' 
-                    color='gray' 
-                    onClick={() => setShowComments(false)} 
+                  <AiOutlineCloseCircle
+                    className='cursor-pointer'
+                    color='gray'
+                    onClick={() => setShowComments(false)}
                   />
                 </div>
                 {post.comments.map((comment) => {
