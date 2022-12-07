@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import DefaultLayout from '../components/DefaultLayout';
 import { fireDb } from '../firebaseConfig';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { AiFillHeart, AiOutlineCloseCircle } from 'react-icons/ai';
 import { TfiCommentAlt } from 'react-icons/tfi';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { mockComponent } from 'react-dom/test-utils';
+import { FiShare } from 'react-icons/fi';
 
 function PostDescription() {
   const currentUser = JSON.parse(localStorage.getItem('batnr-user'));
@@ -126,9 +127,7 @@ function PostDescription() {
             )}
 
             {/*post info purpose */}
-            <div
-              className='cursor-pointer h-[550px] w-[550px]'
-            >
+            <div className='cursor-pointer h-[550px] w-[550px]'>
               <div className='flex item items-center card-sm p-2'>
                 <div className='h-10 w-10 rounded-full bg-primary flex justify-center items-center text-white mr-2'>
                   <span className='text-2xl '>
@@ -161,6 +160,14 @@ function PostDescription() {
                   >
                     {post.comment.length}
                   </h1>
+                </div>
+                <div className='flex space-x-2 items-center'>
+                  <FiShare  
+                    onClick={()=>navigate(`/SharePost/${post.id}`)} 
+                    size={25} 
+                    color='gray' 
+                    className='cursor-pointer' 
+                  />
                 </div>
               </div>
             </div>

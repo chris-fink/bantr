@@ -7,6 +7,7 @@ import AddPost from './pages/AddPost'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PostDescription from './pages/PostDescription';
+import SharePost from './pages/SharePost';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Routes>
 
           <Route path='/' element={<ProtectedRouted><Home /></ProtectedRouted>} />
+          <Route path='/sharepost/:id' element={<ProtectedRouted><SharePost /></ProtectedRouted>} />
+          <Route path='/home' element={<ProtectedRouted><Home /></ProtectedRouted>} />
           <Route path='/addpost' element={<ProtectedRouted><AddPost /></ProtectedRouted>} />
           <Route path='/post/:id' element={<ProtectedRouted><PostDescription /></ProtectedRouted>} />
           <Route path='/login' element={<Login />} />
@@ -26,9 +29,8 @@ function App() {
     </div>
   );
 }
-function ProtectedRouted({children}){
-  if(localStorage.getItem('bantr-user'))
-  {
+function ProtectedRouted({ children }) {
+  if (localStorage.getItem('bantr-user')) {
     return children
   } else {
     return <Navigate to='/login' />
