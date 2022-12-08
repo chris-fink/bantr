@@ -12,7 +12,7 @@ function Post(post) {
     }
 
     return (
-        <div onClick={()=>navigate(`post/${post.id}`)} className='cursor-pointer'>
+        <div onClick={()=>navigate(`/post/${post.id}`)} className='cursor-pointer'>
             <div className='flex item items-center card-sm p-2'>
                 <div className='h-10 w-10 rounded-full bg-primary flex justify-center items-center text-white mr-2'>
                     <span className='text-2xl '>
