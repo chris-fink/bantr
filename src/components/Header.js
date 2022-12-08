@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CgMenuRightAlt } from 'react-icons/cg';
 
 function Header() {
+  const user = JSON.parse(localStorage.getItem('bantr-user'));
   const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
@@ -10,24 +11,24 @@ function Header() {
 
     {
       title: 'Home',
-      path: '/'
+      path: '/',
     },
     {
       title: 'Add Post',
-      path: '/addpost'
+      path: '/addpost',
     },
     {
       title: 'Shares',
-      path: '/shares'
+      path: '/share',
     },
     {
       title: 'Profile',
-      path: '/profile'
-    }
+      path: `/profile/${user.id}`,
+    },
   ];
 
   return (
-    <div className='p-2 bg-secondary rounded-md  border-4 border-[#ffba08]'>
+    <div className='p-3 bg-secondary rounded-md  border-4 border-[#ffba08]'>
       {!showMenu && (
         <div className='md:flex justify-end mr-5 mt-5 hidden bg-secondary -mb-12'>
           <CgMenuRightAlt size={30} color='white' className='cursor-pointer' onClick={() => setShowMenu(true)} />
@@ -36,7 +37,12 @@ function Header() {
 
       <div className='flex items-center justify-between'>
 
-        <h1 className='text-6xl font-semibold text-white ' id='logo'>bantr</h1>
+        <div>
+          <h1 className='text-6xl font-semibold text-white ' id='logo'>bantr</h1>
+          <span className='font-semibold p-2'>
+            {user.email.substring(0, user.email.length - 10)}
+          </span>
+        </div>
         {/*web view */}
         <div className="flex space-x-10 justify-end items-center md:flex-col md:items-end md:space-y-5 md:hidden">
           {menuItems.map((item) => {
@@ -53,9 +59,9 @@ function Header() {
               </Link>
             );
           })}
-          <h1 
+          <h1
             className='text-gray-200 font-semibold cursor-pointer'
-            onClick={()=>{
+            onClick={() => {
               localStorage.removeItem('bantr-user');
               navigate('/login');
             }}
@@ -73,13 +79,13 @@ function Header() {
                 {item.title}
               </Link>
             })}
-            <h1 
-            className='text-gray-200 font-semibold cursor-pointer'
-            onClick={()=>{
-              localStorage.removeItem('bantr-user');
-              navigate('/login');
-            }}
-          >Logout</h1>
+            <h1
+              className='text-gray-200 font-semibold cursor-pointer'
+              onClick={() => {
+                localStorage.removeItem('bantr-user');
+                navigate('/login');
+              }}
+            >Logout</h1>
           </div>
         )}
       </div>
