@@ -37,7 +37,10 @@ function Header() {
 
       <div className='flex items-center justify-between'>
 
-        <div>
+        <div 
+          onClick={()=>navigate('/')}
+          className='cursor-pointer'
+        >
           <h1 className='text-6xl font-semibold text-white ' id='logo'>bantr</h1>
           <span className='font-semibold p-2'>
             {user.email.substring(0, user.email.length - 10)}

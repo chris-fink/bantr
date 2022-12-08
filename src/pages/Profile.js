@@ -12,6 +12,11 @@ function Profile() {
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState(null);
     const params = useParams();
+    const getUserName = (text) => {
+        const email = text;
+        const userName = email.substring(0, email.length - 10)
+        return userName;
+    };
 
     const getPosts = async () => {
         dispatch({ type: 'showLoading' });
@@ -33,9 +38,42 @@ function Profile() {
         getPosts();
         getUser();
     }, []);
+
     return (
-        <DefaultLayout>Profile</DefaultLayout>
-    )
+        <DefaultLayout>
+            {user && (
+                <>
+                    {' '}
+                    <div className='cursor-pointer h-[550px] w-[550px]'>
+                        <div className='flex item items-center card-sm p-2'>
+                            <div className='h-24 w-24 rounded-full bg-primary flex justify-center items-center text-white mr-2'>
+                                <span className='text-7xl '>
+                                    {getUserName(user.email)[0]}
+                                </span>
+                            </div>
+                            <div className='flex flex-col space-y-1'>
+                                <span>{getUserName(user.email)}</span>
+                                <span>{user.email}</span>
+                                <hr />
+                                <span>{user.bio}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='mt-10'>
+                        <div className='card-sm p-2'>
+                            <h1>Posts uploaded by: {getUserName(user.email)} </h1>
+                        </div>
+                        <div className='grid grid-cols-4 md:grid-cols-1 gap-10 mt-5'>
+                            {posts.map((post) => {
+                                return <Post post={Post} />
+                            })}
+                        </div>
+                    </div>
+                </>
+            )}
+        </DefaultLayout>
+    );
 }
 
 export default Profile

@@ -21,8 +21,9 @@ function Post(post) {
                 </div>
                 <span>{getUserName()}</span>
             </div>
-            <div className='w-full text-center justify-center flex card-sm'>
+            <div className='w-full text-center justify-center flex flex-col card-sm'>
                 <img src={post.imageURL} alt='' className='h-60 w-60' />
+                <span className='text-gray-500 text-left my-2 p-1'>{post.descreiption}</span>
             </div>
             <div className='card-sm p-2 flex w-full items-center space-x-5'>
                 <div className='flex space-x-2 items-center'>
