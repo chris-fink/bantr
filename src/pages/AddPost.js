@@ -3,7 +3,7 @@ import DefaultLayout from '../components/DefaultLayout'
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc } from 'firebase/firestore';
 import { fireDb } from "../firebaseConfig";
 import { useNavigate } from 'react-router-dom';
 
